@@ -4,11 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Color Tool</title>
-    <script src="//unpkg.com/brain.js" defer></script>
-    <script src="script.js" defer></script>
+    <title>introduction to Machine Learning with Brain.js</title>
 </head>
 <body>
-    <div id="diagram"></div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/brain.js/2.0.0-beta.1/brain-browser.js" integrity="sha512-bI0AOBSlsQUR/VlZhVj6PuYqjQFO4YTD6Fpw2UBEGC+QkZWLiDgiFZpDefJFnS+ptTjiwZS30VsaF5vJtkQCGw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <script>
+        const trainingData = [
+            [10,9,8,7,6,5,4,3,2,1,0]
+    ];
+
+    const network = new brain.recurrent.LSTMTimeStep();
+
+    network.train(trainingData, {
+        errorThresh: 0.005,
+        log: stats => {
+            console.log(stats);
+        }
+    })
+
+    console.log(network.run([7,6,5,4,3]))
+    </script>
+
+
 </body>
 </html>
